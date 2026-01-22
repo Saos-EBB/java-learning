@@ -12,6 +12,7 @@ public class PM_Appl {
         return true;
     }
 
+
     public PM get(String name) {
         return (name != null) ? managements.get(name.trim()) : null;
     }

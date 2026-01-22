@@ -1,33 +1,27 @@
 package src;
 
 import org.junit.jupiter.api.Test;
-
-import javax.naming.InvalidNameException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTest {
 
     @Test
-    void setFirstNameTestInvalids() throws InvalidNameException {
-    Person p = new Person("Kevin","Schaberl");
-    assertEquals("Kevin" , "!1234!");
+    void testValidPerson() {
+        assertDoesNotThrow(() -> new Person("Max", "Mustermann"));
     }
 
     @Test
-    void setLastName() throws InvalidNameException {
-        Person p = new Person("Kevin","Schaberl");
-        assertEquals("Schaberl" , "Schaberl!");
+    void testInvalidFirstNameShouldThrowException() {
+        Exception exception = assertThrows(InvalidPersonNameException.class, () -> {
+            new Person("Max123", "Mustermann");
+        });
+        assertTrue(exception.getMessage().contains("Vorname"));
     }
 
-
-
     @Test
-    void getName() throws ItemNotFoundException, InvalidNameException {
-        Person p = new Person("Kevin","Schaberl");
-
-
-
-
+    void testInvalidLastNameShouldThrowException() {
+        assertThrows(InvalidPersonNameException.class, () -> {
+            new Person("Max", "Muster67mann");
+        });
     }
 }

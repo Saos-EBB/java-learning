@@ -1,27 +1,24 @@
 package src;
 
-import javax.naming.InvalidNameException;
 import java.time.LocalDate;
 
 public class Person {
     private String firstName;
     private String lastName;
-    private Gender gender; // Enum statt String
-    private Address address; // Klasse statt String
+    private Gender gender;
+    private Address address;
     private LocalDate birthDate;
 
-    // Konstruktor: Nur Name
-    public Person(String firstName, String lastName) throws InvalidNameException {
+    // Konstruktoren delegieren an den Hauptkonstruktor
+    public Person(String firstName, String lastName) {
         this(firstName, lastName, Gender.OTHER, null, null);
     }
 
-    // Konstruktor: Name, Geschlecht, Datum
-    public Person(String firstName, String lastName, Gender gender, LocalDate birthDate) throws InvalidNameException {
+    public Person(String firstName, String lastName, Gender gender, LocalDate birthDate) {
         this(firstName, lastName, gender, null, birthDate);
     }
-
-    // Hauptkonstruktor (nutzt Setter für Resilienz)
-    public Person(String firstName, String lastName, Gender gender, Address address, LocalDate birthDate) throws InvalidNameException {
+    //Hauptkonstruktor
+    public Person(String firstName, String lastName, Gender gender, Address address, LocalDate birthDate) {
         setFirstName(firstName);
         setLastName(lastName);
         this.gender = (gender != null) ? gender : Gender.OTHER;
@@ -29,30 +26,28 @@ public class Person {
         this.birthDate = birthDate;
     }
 
-    public void setFirstName(String firstName) throws InvalidNameException {
-        if (!firstName.matches("^[a-zA-Z ÄäÖöÜüß]*$")) {
-            throw new InvalidNameException("Ungültige Zeichen ");
+    //Setter
+    public void setFirstName(String firstName) {
+        if (firstName == null || !firstName.matches("^[a-zA-Z ÄäÖöÜüß]+$")) {
+            throw new InvalidPersonNameException("Ungültiger Vorname (keine Zahlen erlaubt): " + firstName);
         }
         this.firstName = firstName.trim();
     }
 
-    public void setLastName(String lastName) throws InvalidNameException {
-        if (!lastName.matches("^[a-zA-Z ÄäÖöÜüß]*$")) {
-            throw new InvalidNameException("Ungültige Zeichen");
+    public void setLastName(String lastName) {
+        if (lastName == null || !lastName.matches("^[a-zA-Z ÄäÖöÜüß]+$")) {
+            throw new InvalidPersonNameException("Ungültiger Nachname (keine Zahlen erlaubt): " + lastName);
         }
-        this.lastName = (lastName != null) ? lastName.trim() : "";
+        this.lastName = lastName.trim();
     }
 
-
+    // Getter
     public String getName() {
-        try {
-            return firstName + " " + lastName;
-        }catch (ItemNotFoundException notFond) {
-            notFond.getStackTrace();
-            System.out.println("Dieser Name ist nicht in der liste ");
-        }
+        return firstName + " " + lastName;
+    }
 
-        return firstName+" "+lastName;
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
@@ -61,13 +56,5 @@ public class Person {
                 gender, getName(),
                 (birthDate != null ? birthDate : "k.A."),
                 (address != null ? address : "k.A."));
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
     }
 }
