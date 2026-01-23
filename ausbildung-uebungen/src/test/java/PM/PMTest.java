@@ -1,4 +1,4 @@
-package src;
+package PM;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ class PMTest {
     }
 
     @Test
-    @DisplayName("Person sollte erfolgreich zur Liste hinzugefügt werden")
+    @DisplayName("Create person - anlegen funkt ")
     void testCreatePerson() throws Exception {
         verwaltung.createPerson("Max", "Mustermann");
         assertEquals(1, verwaltung.getPersons().size(), "Die Liste sollte genau eine Person enthalten.");
@@ -23,7 +23,7 @@ class PMTest {
     }
 
     @Test
-    @DisplayName("Mehrere Personen sollten korrekt hinzugefügt werden")
+    @DisplayName("Create Multiple Persons - funkt")
     void testCreateMultiplePersons() throws Exception {
         verwaltung.createPerson("Max", "Mustermann");
         verwaltung.createPerson("Erika", "Musterfrau");
@@ -31,7 +31,7 @@ class PMTest {
     }
 
     @Test
-    @DisplayName("Löschen einer Person über den Nachnamen (Case-Insensitive)")
+    @DisplayName("Löschen über Nachname - funkt")
     void testRemovePerson() {
         verwaltung.createPerson("Max", "Mustermann");
         verwaltung.removePerson("MUSTERMANN"); // Testet Case-Insensitivity
@@ -39,7 +39,7 @@ class PMTest {
     }
 
     @Test
-    @DisplayName("Löschen einer nicht existierenden Person sollte Liste unverändert lassen")
+    @DisplayName("löschen von nicht existenten daten Löscht nix -funkt ")
     void testRemoveNonExistentPerson() throws Exception {
         verwaltung.createPerson("Max", "Mustermann");
         verwaltung.removePerson("Schmidt");
@@ -47,7 +47,7 @@ class PMTest {
     }
 
     @Test
-    @DisplayName("Null-Check beim Löschen")
+    @DisplayName("Löschen von 'null' löscht nix -funkt")
     void testRemoveNull() throws Exception {
         verwaltung.createPerson("Max", "Mustermann");
         assertDoesNotThrow(() -> verwaltung.removePerson(null));

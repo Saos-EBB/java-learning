@@ -1,4 +1,4 @@
-package src;
+package PM;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -43,15 +43,15 @@ public class Main {
 
 
     private static void addPerson() {
-        System.out.print("Ziel-Standort eingeben (z.B. Linz): ");
-        String ziel = sc.nextLine();
+        System.out.print("Ziel-Standort eingeben (ID oder Name): ");
+        String ziel = keineSonderzeichen();
         PM target = app.get(ziel);
 
         if (target == null) {
             System.out.println("Standort existiert nicht.");
             return;
         }
-
+        int id = Integer.parseInt(IdOrNametoString());
         String vn = getValidNameInput("Vorname");
         String nn = getValidNameInput("Nachname");
 
@@ -82,7 +82,7 @@ public class Main {
         }
 
         try {
-            target.createPerson(vn, nn, gender, addr, bDate);
+            target.createPerson(id,vn, nn, gender, addr, bDate);
             System.out.println("Person erfolgreich erstellt!");
         } catch (InvalidPersonNameException e) {
             System.out.println("Unerwarteter Fehler: " + e.getMessage());
@@ -173,6 +173,18 @@ public class Main {
         }
         return in.trim();
     }
+
+    private static String IdOrNametoString(){
+        String in;
+        while (true){
+            in = sc.nextLine();
+            if (in.matches("^[0-9] +$")) break;
+            if (in.matches("^[a-zA-Z ÄäÖöÜüß]+$")) break;
+        }
+        return in;
+    }
+
+
 
 
 }

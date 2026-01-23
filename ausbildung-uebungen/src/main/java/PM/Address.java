@@ -1,13 +1,15 @@
-package src;
+package PM;
 
 public class Address {
+    private int id;
     private String zipCode;
     private String city;
     private String street;
     private String houseNumber;
 
-        public Address(String zipCode, String city, String street, String houseNumber) {
+        public Address(int id,String zipCode, String city, String street, String houseNumber) {
             // .trim() für saubere Daten !!
+            setID(id);
             setZipCode(zipCode);
             setCity(city);
             setStreet(street);
@@ -15,6 +17,10 @@ public class Address {
         }
 
     // Getter
+    public int getId() {
+        return id;
+    }
+
     public String getZipCode() {
         return zipCode;
     }
@@ -61,6 +67,14 @@ public class Address {
             this.houseNumber = xxx.trim();
         } else {
             this.houseNumber = "";
+        }
+    }
+    public void setID(int xxx) {
+        if (xxx >= 0) {
+            this.id = xxx;
+        } else {
+            System.out.println("Cant be < 0 .");
+
         }
     }
 

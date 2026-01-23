@@ -1,5 +1,6 @@
-package src;
+package PM;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,6 +12,7 @@ class PersonTest {
     }
 
     @Test
+    @DisplayName("Vorname Eingabe invalid (zahlen) - funkt")
     void testInvalidFirstNameShouldThrowException() {
         Exception exception = assertThrows(InvalidPersonNameException.class, () -> {
             new Person("Max123", "Mustermann");
@@ -19,9 +21,12 @@ class PersonTest {
     }
 
     @Test
+    @DisplayName("Nachname Eingabe invalid (Sonderzeichen) - funkt")
     void testInvalidLastNameShouldThrowException() {
         assertThrows(InvalidPersonNameException.class, () -> {
-            new Person("Max", "Muster67mann");
+            new Person("Max", "Muster#?mann");
         });
     }
+
+
 }

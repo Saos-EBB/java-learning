@@ -1,24 +1,26 @@
-package src;
+package PM;
 
 import java.time.LocalDate;
 
 public class Person {
+    private int id;
     private String firstName;
     private String lastName;
     private Gender gender;
     private Address address;
     private LocalDate birthDate;
 
-    // Konstruktoren delegieren an den Hauptkonstruktor
-    public Person(String firstName, String lastName) {
-        this(firstName, lastName, Gender.OTHER, null, null);
+    // Konstruktoren delegieren an den Hauptkonstruktor!
+    public Person(int id,String firstName, String lastName) {
+        this(id ,firstName, lastName, Gender.OTHER, null, null);
     }
 
-    public Person(String firstName, String lastName, Gender gender, LocalDate birthDate) {
-        this(firstName, lastName, gender, null, birthDate);
+    public Person(int id,String firstName, String lastName, Gender gender, LocalDate birthDate) {
+        this(id,firstName, lastName, gender, null, birthDate);
     }
-    //Hauptkonstruktor
-    public Person(String firstName, String lastName, Gender gender, Address address, LocalDate birthDate) {
+    //Hauptkonstruktor!
+    public Person(int id,String firstName, String lastName, Gender gender, Address address, LocalDate birthDate) {
+        this.id = id;
         setFirstName(firstName);
         setLastName(lastName);
         this.gender = (gender != null) ? gender : Gender.OTHER;
@@ -27,6 +29,7 @@ public class Person {
     }
 
     //Setter
+    //FIXX
     public void setFirstName(String firstName) {
         if (firstName == null || !firstName.matches("^[a-zA-Z ÄäÖöÜüß]+$")) {
             throw new InvalidPersonNameException("Ungültiger Vorname (keine Zahlen erlaubt): " + firstName);
@@ -41,6 +44,10 @@ public class Person {
         this.lastName = lastName.trim();
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     // Getter
     public String getName() {
         return firstName + " " + lastName;
@@ -48,6 +55,10 @@ public class Person {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

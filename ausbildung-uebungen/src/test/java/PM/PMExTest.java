@@ -1,4 +1,4 @@
-package src;
+package PM;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +16,7 @@ class PMExTest {
     }
 
     @Test
-    @DisplayName(" i hob wos gfundn ")
+    @DisplayName(" i hob wos gfundn -funkt ")
     void testFindPersonSuccess() {
         Person p = verwaltung.findPersonByLastName("Mustermann");
         assertNotNull(p);
@@ -24,7 +24,7 @@ class PMExTest {
     }
 
     @Test
-    @DisplayName("i find nix ")
+    @DisplayName("i find nix -funkt")
     void testFindPersonNotFound_ShouldThrowException() {
         assertThrows(ItemNotFoundException.class, () -> {
             verwaltung.findPersonByLastName("GibtEsNicht");
