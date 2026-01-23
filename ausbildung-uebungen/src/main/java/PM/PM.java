@@ -14,16 +14,16 @@ public class PM {
         this.name = (name != null) ? name.trim() : "Unbenannt";
     }
 
-    public void createPerson(int id,String fName, String lName) {
-        persons.add(new Person(id ,fName, lName));
+    public void createPerson(String fName, String lName) {
+        persons.add(new Person(fName, lName));
     }
 
-    public void createPerson(int id,String fName, String lName, Gender gender, LocalDate birthDate) {
-        persons.add(new Person(id, fName, lName, gender, birthDate));
+    public void createPerson(String fName, String lName, Gender gender, LocalDate birthDate) {
+        persons.add(new Person( fName, lName, gender, birthDate));
     }
 
-    public void createPerson(int id,String fName, String lName, Gender gender, Address addr, LocalDate birthDate) {
-        persons.add(new Person(id ,fName, lName, gender, addr, birthDate));
+    public void createPerson(String fName, String lName, Gender gender, Address addr, LocalDate birthDate) {
+        persons.add(new Person(fName, lName, gender, addr, birthDate));
     }
 
     // Anleitung: Suchen in einer Liste mit Java Streams
@@ -46,24 +46,6 @@ public class PM {
                 .orElseThrow(() -> new ItemNotFoundException("Person mit Nachnamen '" + lName + "' nicht gefunden."));
     }
 
-    // Try: Suchen in einer Liste mit Java Streams
-    public Person findPersonByID(int id) {
-        if (id < 0) throw new ItemNotFoundException("Suchbegriff darf nicht unter null sein.");
-
-        return persons.stream()
-
-                // 3. Filtern: Behält nur Elemente, die die Bedingung erfüllen (Prädikat)
-                // .equalsIgnoreCase sorgt für Fehlertoleranz bei Groß-/Kleinschreibung
-                .filter(p -> p.g)
-
-                // 4. Finden: Sucht das erste Element, das den Filter passiert hat
-                // Gibt ein 'Optional<Person>' zurück (kann ein Ergebnis enthalten oder leer sein)
-                .findFirst()
-
-                // 5. Abschluss/Exception: Wenn das Optional leer ist, wird die Exception geworfen.
-                // Wenn eine Person gefunden wurde, wird diese direkt zurückgegeben.
-                .orElseThrow(() -> new ItemNotFoundException("Person mit Nachnamen '" + lName + "' nicht gefunden."));
-    }
 
     /*
     persons.stream()
@@ -73,6 +55,7 @@ public class PM {
     .limit(5)                      // 4. Begrenzen
     .toList();                     // 5. Ergebnis sammeln
      */
+    //******************************************************************************************************************
 
     public void removePerson(String lName) {
         if (lName != null) {

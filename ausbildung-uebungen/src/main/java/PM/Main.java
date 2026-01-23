@@ -51,7 +51,7 @@ public class Main {
             System.out.println("Standort existiert nicht.");
             return;
         }
-        int id = Integer.parseInt(IdOrNametoString());
+
         String vn = getValidNameInput("Vorname");
         String nn = getValidNameInput("Nachname");
 
@@ -82,7 +82,7 @@ public class Main {
         }
 
         try {
-            target.createPerson(id,vn, nn, gender, addr, bDate);
+            target.createPerson(vn, nn, gender, addr, bDate);
             System.out.println("Person erfolgreich erstellt!");
         } catch (InvalidPersonNameException e) {
             System.out.println("Unerwarteter Fehler: " + e.getMessage());
@@ -174,17 +174,10 @@ public class Main {
         return in.trim();
     }
 
-    private static String IdOrNametoString(){
-        String in;
-        while (true){
-            in = sc.nextLine();
-            if (in.matches("^[0-9] +$")) break;
-            if (in.matches("^[a-zA-Z ÄäÖöÜüß]+$")) break;
-        }
-        return in;
+
+
+
+
     }
 
 
-
-
-}
