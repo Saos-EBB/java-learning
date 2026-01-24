@@ -1,4 +1,4 @@
-package PM;
+package PM.Management;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,8 @@
 package PM;
 
+import PM.Exceptions.ItemNotFoundException;
+import PM.Management.PM;
+import PM.Management.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

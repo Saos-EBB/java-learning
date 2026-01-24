@@ -1,4 +1,4 @@
-package PM;
+package PM.Management;
 
 public enum Gender {
     MAN,
