@@ -1,6 +1,7 @@
 package src.Logik;
 
 import src.Persistierung.*;
+import src.UI.Art;
 import src.UI.Menu;
 
 import java.util.Arrays;
@@ -31,14 +32,16 @@ public class GameEngine {
             // User Attacken zuteilen
             Attack[] uAtks = getRandomAttacks(pokedex);
             tempMemory.setupUser(pokedex.getObj(userIdx), uAtks);
-            System.out.println(  "USER : \n" + pokedex.toString(userIdx) + "\n" + Arrays.toString(uAtks));
+            //System.out.println(  "USER : \n" + pokedex.toString(userIdx) + "\n" + Arrays.toString(uAtks));
+            Art.printUserBox(pokedex.getObj(userIdx), uAtks);
 
             // Npc Poke randy
             int npcIdx = rollIdx(pokedex.sizePke());
             // Npc Atk randy
             Attack[] nAtks = getRandomAttacks(pokedex);
             tempMemory.setupNpc(pokedex.getObj(npcIdx), nAtks);
-            System.out.println( "Npc : \n" + pokedex.toString(npcIdx) + "\n" + Arrays.toString(nAtks));
+            //System.out.println( "Npc : \n" + pokedex.toString(npcIdx) + "\n" + Arrays.toString(nAtks));
+            Art.printNpcBox(pokedex.getObj(npcIdx) , nAtks);
 
             b.battle(tempMemory);
 

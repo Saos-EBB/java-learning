@@ -16,9 +16,10 @@ public class BattleLogic {
         Random r = new Random();
         Menu m = new Menu();
 
-
+        int round = 1;
         while (u.getHp() > 0 && n.getHp() > 0) {
-            System.out.println("\nChoose:\n1) " + mem.getUserAttacks()[0] + "\n2) " + mem.getUserAttacks()[1]);
+            Art.printRound(round++);
+            System.out.println(Art.MINT + "\nChoose:\n1) " + mem.getUserAttacks()[0] + "\n2) " + mem.getUserAttacks()[1] + Art.RESET);
             int choice = m.inputToIntOnetoTwo() - 1;
 
             Attack uAtk = mem.getUserAttacks()[choice];
@@ -31,11 +32,11 @@ public class BattleLogic {
                     if (mem.getNpcStatus() != Effect.FLINCH) {
                         turn(n, nAtk, u, mem, calc, false);
                     } else {
-                        System.out.println(n.getName() + " flinched..");
+                        System.out.println(Art.ORANGE + n.getName() + " flinched.." + Art.RESET);
                     }
                 }
                 if (n.getHp() < 0) {
-                    System.out.println(n.getName() + " fainted .. ");
+                    System.out.println(Art.ORANGE + n.getName() + " fainted.." + Art.RESET);
                     break;
                 }
             } else {
@@ -44,11 +45,12 @@ public class BattleLogic {
                     if (mem.getUserStatus() != Effect.FLINCH) {
                         turn(u, uAtk, n, mem, calc, true);
                     } else {
-                        System.out.println(u.getName() + " flinched..");
+                        System.out.println(Art.MINT + u.getName() + " flinched.." + Art.RESET);
+
                     }
                 }
                 if (u.getHp() < 0) {
-                    System.out.println(u.getName() + " fainted..");
+                    System.out.println(Art.MINT + u.getName() + " fainted.." + Art.RESET);
                     break;
                 }
             }
@@ -56,7 +58,7 @@ public class BattleLogic {
             //ende
             applyEnd(u, n, mem, calc);
         }
-        System.out.println(n.getHp() > 0 ? "You lost!" : "You won!");
+        System.out.println(n.getHp() > 0 ? Art.ORANGE + "You lost!" + Art.RESET : Art.MINT + "You won!" + Art.RESET);
     }
 
     // fight
@@ -122,8 +124,7 @@ public class BattleLogic {
         if (s == CONFUSION && r.nextInt(100) < 50) {
             y = executeSelf(att, atk, calc);
             att.setHp(att.getHp() - y);
-            System.out.println(att.getName() + " hits itself for " + y + " DMG.  HP: " + att.getHp() + "/" + att.getHpMax());
-            return;
+            System.out.println("  " + att.getName() + " → hits itself | " + y + " DMG | HP: " + att.getHp() + "/" + att.getHpMax());            return;
         }
 
         // 4. check if multi - crit
@@ -139,7 +140,7 @@ public class BattleLogic {
 
         // 5. schaden geben
         def.setHp(def.getHp() - y);
-        System.out.println(att.getName() + " hits " + def.getName()+ " with "+atk.getName() +" for " + y + " DMG." + def.getName() + "HP: " + def.getHp() + "/" + def.getHpMax());
+        System.out.println("  " + att.getName() + " → " + atk.getName() + " → " + def.getName() + " | " + y + " DMG | HP: " + def.getHp() + "/" + def.getHpMax());
 
 
 
@@ -160,20 +161,20 @@ public class BattleLogic {
         // BURN
         if (mem.getUserStatus() == Effect.BURN) {
             u.setHp(u.getHp() - (int) calc.burn(u));
-            System.out.println(u.getName() + " is burning for " + (int) calc.burn(u) + " DMG. HP: " + u.getHp() + "/" + u.getHpMax());
+            System.out.println("  🔥 " + u.getName() + " burn | " + (int) calc.burn(u) + " DMG | HP: " + u.getHp() + "/" + u.getHpMax());
         }
         if (mem.getNpcStatus() == Effect.BURN) {
             n.setHp(n.getHp() - (int) calc.burn(n));
-            System.out.println(n.getName() + " is burning for " + (int) calc.burn(n) + " DMG. HP: " + n.getHp() + "/" + n.getHpMax());
+            System.out.println("  🔥 " + n.getName() + " burn | " + (int) calc.burn(n) + " DMG | HP: " + n.getHp() + "/" + n.getHpMax());
         }
         // POISON
         if (mem.getUserStatus() == Effect.POISON) {
             u.setHp(u.getHp() - (int) calc.poison(u));
-            System.out.println(u.getName() + " is poisoned for " + (int) calc.poison(u) + " DMG. HP: " + u.getHp() + "/" + u.getHpMax());
+            System.out.println("  ☠ " + u.getName() + " poison | " + (int) calc.poison(u) + " DMG | HP: " + u.getHp() + "/" + u.getHpMax());
         }
         if (mem.getNpcStatus() == Effect.POISON) {
             n.setHp(n.getHp() - (int) calc.poison(n));
-            System.out.println(n.getName() + " is poisoned for " + (int) calc.poison(n) + " DMG. HP: " + n.getHp() + "/" + n.getHpMax());
+            System.out.println("  ☠ " + n.getName() + " poison | " + (int) calc.poison(n) + " DMG | HP: " + n.getHp() + "/" + n.getHpMax());
         }
 
         if (mem.getUserStatus() == Effect.FLINCH) mem.setUserStatus(NONE);

@@ -5,6 +5,7 @@ public class Pokemon {
     private String name, type1, type2;
     private int total, hp, attack, defense, spAtk, spDef, speed;
     private int hpMax;
+
     // Konstruktor
     public Pokemon(int id, String name, String type1, String type2, int total, int hp, int attack, int defense, int spAtk, int spDef, int speed) {
         this.id = id;
@@ -40,7 +41,7 @@ public class Pokemon {
     }
 
     // heal
-    public void heal(Pokemon x){
+    public void heal(Pokemon x) {
         this.hp = hpMax;
     }
 
@@ -69,7 +70,9 @@ public class Pokemon {
         return hp;
     }
 
-    public int getHpMax(){return  hpMax;}
+    public int getHpMax() {
+        return hpMax;
+    }
 
     public void setHp(int hp) {
         this.hp = hp;
@@ -83,6 +86,13 @@ public class Pokemon {
         return name;
     }
 
+    public String getType1() {
+        return type1;
+    }
+
+    public String getType2() {
+        return type2;
+    }
 
     @Override
     public String toString() {

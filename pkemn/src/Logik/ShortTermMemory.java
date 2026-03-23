@@ -62,11 +62,11 @@ public class ShortTermMemory {
         this.npcStatus = npcStatus;
     }
 
-    public Enum<Effect> getUserStatus() {
+    public Effect getUserStatus() {
         return userStatus;
     }
 
-    public Enum<Effect> getNpcStatus() {
+    public Effect getNpcStatus() {
         return npcStatus;
     }
 

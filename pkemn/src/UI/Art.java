@@ -1,5 +1,8 @@
 package src.UI;
 
+import src.Persistierung.Pokemon;
+import src.Persistierung.Attack;
+
 public class Art {
 
 
@@ -68,12 +71,49 @@ public class Art {
         };
     }
 
-    static final String RESET = "\u001B[0m";
+    public static final String RESET = "\u001B[0m";
     static final String RED = "\u001B[31m";
     static final String YELLOW = "\u001B[33m";
     static final String GREEN = "\u001B[32m";
     static final String BLUE = "\u001B[34m";
     static final String PURPLE = "\u001B[35m";
     static final String CYAN = "\u001B[36m";
+    public static final String MINT = "\u001B[38;2;135;255;175m";
+    public static final String ORANGE = "\u001B[38;2;255;175;95m";
+    static final String GRAY = "\u001B[38;2;180;180;180m";
+    static final String BOLD = "\u001B[1m";
 
-}
+
+    public static void printUserBox(Pokemon p, Attack[] atks) {
+        System.out.println(MINT +
+                "────────────────────────────────────────\n" +
+                "  ★ " + BOLD + p.getName() + RESET + MINT +
+                " (" + p.getType1() + (p.getType2().equals("null") ? "" : "/" + p.getType2()) + ")" +
+                "  |  HP: " + p.getHp() + "/" + p.getHpMax() + "\n" +
+                "  ATK: " + p.getAtk() + "  DEF: " + p.getDef() +
+                "  |  SP.ATK: " + p.getSpAtk() + "  SP.DEF: " + p.getSpDef() +
+                "  |  SPD: " + p.getSpeed() + "\n" +
+                "  1) " + atks[0].getName() + " (Power: " + atks[0].getPower() + ")" +
+                "  |  2) " + atks[1].getName() + " (Power: " + atks[1].getPower() + ")\n" +
+                "────────────────────────────────────────" + RESET);
+    }
+
+    public static void printNpcBox(Pokemon p, Attack[] atks) {
+        System.out.println(ORANGE +
+                "────────────────────────────────────────\n" +
+                "  ☆ " + BOLD + p.getName() + RESET + ORANGE +
+                " (" + p.getType1() + (p.getType2().equals("null") ? "" : "/" + p.getType2()) + ")" +
+                "  |  HP: " + p.getHp() + "/" + p.getHpMax() + "\n" +
+                "  ATK: " + p.getAtk() + "  DEF: " + p.getDef() +
+                "  |  SP.ATK: " + p.getSpAtk() + "  SP.DEF: " + p.getSpDef() +
+                "  |  SPD: " + p.getSpeed() + "\n" +
+                "  1) " + atks[0].getName() + " (Power: " + atks[0].getPower() + ")" +
+                "  |  2) " + atks[1].getName() + " (Power: " + atks[1].getPower() + ")\n" +
+                "────────────────────────────────────────" + RESET);
+    }
+
+    public static void printRound(int round) {
+        System.out.println(GRAY + "\n──────────── Round " + round + " ────────────" + RESET);
+    }
+
+}//Quack!
