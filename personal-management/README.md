@@ -79,6 +79,6 @@ java -cp out:junit.jar org.junit.platform.console.ConsoleLauncher --scan-classpa
 
 ---
 
-## Author
+## Author Kevin SCHABERL / SAOS-EBB
 
 Built as a learning project to practice Java OOP and clean code principles.
