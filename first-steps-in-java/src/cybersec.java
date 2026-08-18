@@ -14,7 +14,7 @@ public class cybersec {
 
         ArrayList<Integer> history1 = new ArrayList<>();
         ArrayList<Integer> history2 = new ArrayList<>();
-        char[] validInputs = "ABCDEFabcdef123567890!?#".toCharArray();
+        char[] validInputs = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstvwxyz0123456789!?+-#.,:;_*'<>|ß}".toCharArray();
         char[] password1 = new char[6];
         char[] password2 = new char[6];
         char[] test1 = new char[6];
@@ -25,9 +25,9 @@ public class cybersec {
         int counter1 = 0, counterP1 = 0, save1 = 0, mean1 = 0;
         int Versuche = 0, richtigeVersuche = 0, Versucheaddiren = 0, mean2 = 0;
 
-        boolean klick = false, Version1 = true;
-        boolean klick2 = false, Version2 = true;
-        int range = 1000;
+        boolean klick = false, Version1 = false;
+        boolean klick2 = true, Version2 = true;
+        int range = 100;
 
         String format = "\n%1s%1s%1s%1s\n";
 

@@ -14,8 +14,8 @@ public class MinesweaperV2 {
         int checked = 0;
         boolean alive = true;
         String userInput;
-        int mines = fillMap(map, KoorB, randy);
-        //int mines = fillMapNoPrint(map,randy);
+      //TESTMAP  //int mines = fillMap(map, KoorB, randy);
+        int mines = fillMapNoPrint(map,randy);
         int radius = 0;
         int green = 100 - mines;
 
