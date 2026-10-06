@@ -5,6 +5,8 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow?style=flat-square)
 ![OOP](https://img.shields.io/badge/Concepts-OOP%20%7C%20Enums%20%7C%20Collections-blue?style=flat-square)
 
+> **Disclaimer:** This is a non-commercial fan and learning project. It is **not affiliated with, endorsed, sponsored or approved by** Nintendo, Game Freak, Creatures Inc. or The Pokémon Company. Pokémon and all related names are trademarks of their respective owners. No artwork, sprites, sounds or code from the games are included.
+
 ---
 
 ## About the Project
@@ -131,6 +133,22 @@ This project was built to practice core OOP principles:
 
 - [ ] **Type effectiveness not implemented** — `EffectivenessRawData` is loaded but not used in damage calculation yet
 - [ ] No UI beyond the terminal — potential future feature: simple GUI or web frontend
+
+---
+
+## Game Data Used & License
+
+The **code** is my own and licensed under [MIT](LICENSE).
+
+The **game data** is not mine and is **not** covered by the MIT license. It comes from the Pokémon games (© Nintendo / Game Freak / Creatures Inc. / The Pokémon Company) and is used here only for learning, as plain text:
+
+| File | What's in it |
+|---|---|
+| `src/Persistierung/PokemonRawData` | 17 Pokémon: number, names (English and some German, e.g. Nachtara, Relaxo, Sichlor, Scherox), types, base stats (total, HP, Attack, Defense, Sp. Atk, Sp. Def, Speed) |
+| `src/Persistierung/AttackRawData` | 20 moves: names, effect descriptions, type, category (Physical/Special), power, accuracy, PP |
+| `src/Persistierung/EffectivenessRawData` | type effectiveness chart (18 types) |
+
+The battle mechanics (damage formulas, status effects, critical hits) are modeled after the games' rules; the implementation is my own.
 
 ---
 
