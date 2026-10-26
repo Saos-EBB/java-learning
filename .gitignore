@@ -1,0 +1,8 @@
+# Build-Output
+*.class
+out/
+target/
+bin/
+# IntelliJ
+.idea/
+*.iml
