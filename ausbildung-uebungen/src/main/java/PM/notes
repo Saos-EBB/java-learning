@@ -1,0 +1,16 @@
+Requirements
+InvalidPersonName-Exception
+Wenn ein Nutzer eine Person anlegt, die eine Zahl im Namen hat, soll eine "InvalidPersonName-Exception" geworfen werden. Diese soll von der RuntimeException erben.
+
+Die Anlage des Objektes soll abgebrochen werden und der Nutzer informiert, dass dieser Name ungültig ist. Das Programm soll nicht terminieren, sondern den Nutzer erneut bitten einen Namen einzugeben.
+
+ItemNotFoundException
+Der Nutzer soll Personen durch ihren Namen finden können. Wird ein Name eingegeben, der nicht existiert, soll eine ItemNotFoundException in der Personalverwaltung geworfen werden. Diese soll von der RuntimeException erben.
+
+Der Stacktrace dieser Exception soll in der main-Methode ausgegeben werden. Das Programm soll nicht terminieren und weitere Inputs erhalten.
+
+Test
+Schreibe entsprechende Unittests, um zu prüfen, dass die richtige Exception geworfen wird.
+
+optionale Aufgabe
+In deinen Try-Catch-Blöcken, sorge dafür, dass der Stacktrace der Exception (mit e.printStackTrace()) in denselben print-Stream ausgegeben wird, wie der Rest des Programms.
